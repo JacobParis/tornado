@@ -67,3 +67,5 @@ Having a static list of Card components in my scene doesn't make sense when the 
 
 The requirements ask for a way to delete tasks, but it seems weird to not have a way to view complete tasks so I'm adding an intermediate state called Archived. By toggling a state prop called `showArchived` I can show either the active or archived tasks.
 
+On the UI side, I'm controlling the `showArchived` state with the Tabs component from my UI Kit. Under the hood it's just a radio button group, which makes it very accessible to keyboard users and ties in really well to React's state machine.
+

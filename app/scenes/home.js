@@ -1,8 +1,9 @@
 import React from "react";
 
-import { Page, Container } from "../components/Layout";
-import { H1, HighlightText } from "../components/Text";
 import { Card, CardButton } from "../components/Card";
+import { Page, Container } from "../components/Layout";
+import { Tabs, Tab }  from "../components/Tabs";
+import { H1, HighlightText } from "../components/Text";
 
 const SampleTasks = [
     { text: "Wake Up" },
@@ -13,15 +14,29 @@ const SampleTasks = [
     { text: "Go to sleep", archived: true}
 ];
 
+const TAB_GROUP = "PAGE";
+const TAB_TASKS = "TAB_TASKS";
+const TAB_ARCHIVED = "TAB_ARCHIVED";
+
 export default function () {
     const [tasks, setTasks] = React.useState(SampleTasks);
 
     const [showArchived, setShowArchived] = React.useState(false);
+    const toggleArchived = e => setShowArchived(e.target.value === TAB_ARCHIVED);
 
     return (
         <Page>
             <H1> 🌪️️ To<HighlightText>rna</HighlightText>do 🌪️</H1>
             
+            <Tabs onChange={toggleArchived}>
+                <Tab group={TAB_GROUP} value={TAB_TASKS} defaultChecked>
+                    Tasks
+                </Tab>
+                <Tab group={TAB_GROUP} value={TAB_ARCHIVED} >
+                    Archived
+                </Tab>
+            </Tabs>
+
             <Container>
                 <Cards cards={tasks} showArchived={showArchived} />
                 <CardButton>New Task</CardButton>
