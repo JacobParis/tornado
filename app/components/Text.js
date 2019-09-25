@@ -42,3 +42,8 @@ export const P = styled.p`
     font-family: 'Roboto', sans-serif;
     line-height: 1.75rem;
 `;
+
+export const HighlightText = styled.span`
+    color: ${Theme.Colors.Blue};
+    opacity: 0.4;
+`; 
