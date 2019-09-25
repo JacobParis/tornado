@@ -1,8 +1,13 @@
 import React from "react";
 
+import { Page } from "../components/Layout";
+
 export default function () {
 
     return (
-        <h1> Home Scene </h1>
+        <Page>
+            <h1> Home Scene </h1>
+
+        </Page>
     );
 }
