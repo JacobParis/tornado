@@ -32,3 +32,7 @@ The UI will be built with components stolen from my [UI Library](https://jacobpa
 For drafting UI designs, I use my [Blackboard](https://writeonblackboard.com/) which I shill so often that if they offered an affiliate program I'd be retired already. I sketched out some UI concepts earlier and the only UI component I wanted that I didn't already have made was **Tabs**, which I took the liberty of coding earlier today before beginning this project. Is that cheating? My lawyer won't answer my calls anymore, so I'm afraid we'll never know.
 
 In the Wizard of Oz, the lead character Dorothy's dog is named Toto and you can't spell the tornado that swept her to Oz without todo either. Puns are my friends.
+
+## Ready, set, code
+
+My first step is to add the viewport meta tags so that mobile browsers will render the site at a reasonable scale. I need to add that to the boilerplate itself, but we're on a time limit. While I'm here I'll also change the font and add Roboto for body text and Roboto Condensed Light for headings. There's an overhead to loading multiple fonts, but not one that's going to be an impediment for this project. 
