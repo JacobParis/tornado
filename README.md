@@ -78,3 +78,7 @@ There are a lot of ways to conditionally show components in React, and I'm still
 # Dialog City
 
 The Dialog from my UI Kit is in its infancy still, but it'll work here. Dialogs actually present a rather difficult accessibility challenge since they ideally should assume focus and trap focus within themselves until they're canceled.
+
+Text Inputs are tricky from a usability perspective especially concerning the less tech savvy users. I once had a customer complain that a form submit wasn't working, when the reality was they hadn't entered any data into the fields. They saw the placeholder and assumed it was already filled, so I now make sure my inputs have the option of remaining placeholder free. Placeholders are also a WCAG nightmare since any contrast level that makes the text sufficiently readable is indistinguishable from normal text.
+
+Here I'm going to use an input with a placeholder that moves out of the way as the user types like the Material Design spec promotes.

@@ -1,10 +1,12 @@
 import React from "react";
 
+
 import { Card, CardButton } from "../components/Card";
 import { Dialog, Actions, ActionButton } from "../components/Dialog";
+import { TextInput } from "../components/Inputs";
 import { Page, Container } from "../components/Layout";
 import { Tabs, Tab }  from "../components/Tabs";
-import { H1, H2,  HighlightText } from "../components/Text";
+import { H1, H2, HighlightText } from "../components/Text";
 
 const SampleTasks = [
     { text: "Wake Up" },
@@ -25,6 +27,9 @@ export default function () {
     const [showArchived, setShowArchived] = React.useState(false);
     const toggleArchived = e => setShowArchived(e.target.value === TAB_ARCHIVED);
 
+    const [newTaskText, setNewTaskText] = React.useState("");
+    const changeNewTaskText = e => setNewTaskText(e.target.value);
+
     return (
         <Page>
             <H1> 🌪️️ To<HighlightText>rna</HighlightText>do 🌪️</H1>
@@ -44,9 +49,10 @@ export default function () {
                     <CardButton if={false}>New Task</CardButton>
                 </Switch>
             </Container>
- 
+
             <Dialog>
                 <H2>Create a new task</H2>
+                <TextInput onChange={changeNewTaskText} value={newTaskText} label="Task Name" placeholder />
                 <Actions>
                     <ActionButton>DISCARD</ActionButton>
                     <ActionButton blue>ADD TASK</ActionButton>
