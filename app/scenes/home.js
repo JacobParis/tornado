@@ -6,7 +6,7 @@ import { Dialog, Actions, ActionButton } from "../components/Dialog";
 import { TextInput } from "../components/Inputs";
 import { Page, Container } from "../components/Layout";
 import { Tabs, Tab }  from "../components/Tabs";
-import { H1, H2, HighlightText } from "../components/Text";
+import { H1, H2, HighlightText, P } from "../components/Text";
 
 const SampleTasks = [
     { text: "Wake Up" },
@@ -23,6 +23,7 @@ const TAB_ARCHIVED = "TAB_ARCHIVED";
 
 const DIALOG_CREATE_TASK = "DIALOG_CREATE_TASK";
 const DIALOG_EDIT_TASK = "DIALOG_EDIT_TASK";
+const DIALOG_EDIT_ARCHIVED_TASK = "DIALOG_EDIT_ARCHIVED_TASK";
 
 export default function () {
     const [tasks, setTasks] = React.useState(SampleTasks);
@@ -51,7 +52,11 @@ export default function () {
     const [selectedTask, setSelectedTask] = React.useState();
     const selectTask = task => {
         setSelectedTask(task);
-        setDialog(DIALOG_EDIT_TASK);
+        const dialog = showArchived
+            ? DIALOG_EDIT_ARCHIVED_TASK
+            : DIALOG_EDIT_TASK;
+
+        setDialog(dialog);
     }
 
     const [editTaskText, setEditTaskText] = React.useState("");
@@ -69,6 +74,11 @@ export default function () {
         modifySelectedTask({
             archived: true
         });
+    }
+
+    const deleteTask = () => {
+        setDialog(false);
+        modifySelectedTask();
     }
 
     return (
@@ -108,6 +118,15 @@ export default function () {
                         <ActionButton onClick={closeDialog}>CANCEL</ActionButton>
                         <ActionButton onClick={saveTask}>SAVE</ActionButton>
                         <ActionButton red onClick={archiveTask}>ARCHIVE</ActionButton>
+                    </Actions>
+                </Dialog>
+
+                <Dialog if={DIALOG_EDIT_ARCHIVED_TASK} onClose={closeDialog}>
+                    <H2>Delete task</H2>
+                    <P>If you do this there's no going back</P>
+                    <Actions>
+                        <ActionButton onClick={closeDialog}>CANCEL</ActionButton>
+                        <ActionButton red onClick={deleteTask}>DELETE</ActionButton>
                     </Actions>
                 </Dialog>
             </Switch>
