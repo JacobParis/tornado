@@ -46,3 +46,9 @@ There is some chance that live blogging my dev process is going to push me over 
 ## Building the Page
 
 I'm stealing the Text component from my UI Kit and adding a palette of colors and shades to my Theme file. I don't think I'll need more than one Header and the Paragraph text, but I'm kinda making this up as I go. 
+
+I want to show the tasks as a list of square cards, like sticky notes or physical cards. Back when I was in manufacturing I got the shop converted over to a Toyota style kanban system of cards moving back and forth with inventory. An actual kanban engine is way over scope here, so I'll just live vicariously through my square cards.
+
+These are not coming from my UI Kit since those tiles are built on CSS grid, and here I'm only looking for a 1 dimensional row of identically sized cards.
+
+I guess I'm also picking Blue as my primary color here 

@@ -44,6 +44,6 @@ export const P = styled.p`
 `;
 
 export const HighlightText = styled.span`
-    color: ${Theme.Colors.Blue};
+    color: ${Theme.Colors.Primary};
     opacity: 0.4;
 `; 

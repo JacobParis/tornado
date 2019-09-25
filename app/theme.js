@@ -1,8 +1,10 @@
 export default {
     Layout: {
         Corners: "0.25rem",
+        Grid: "10rem"
     },
     Colors: {
+        Primary: "#0082d5", // Blue
         Blue: "#0082d5",
         Green: "#04BE5B",
         Olive: "#9DBF16",

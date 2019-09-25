@@ -11,3 +11,10 @@ export const Page = styled.div`
     border-radius: ${Theme.Layout.Corners};
     text-align: center;  
 `;
+
+export const Cards = styled.div`
+    background: ${Theme.Shades.Darkest};
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+`;
