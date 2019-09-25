@@ -21,6 +21,9 @@ const TAB_GROUP = "PAGE";
 const TAB_TASKS = "TAB_TASKS";
 const TAB_ARCHIVED = "TAB_ARCHIVED";
 
+const DIALOG_CREATE_TASK = "DIALOG_CREATE_TASK";
+const DIALOG_EDIT_TASK = "DIALOG_EDIT_TASK";
+
 export default function () {
     const [tasks, setTasks] = React.useState(SampleTasks);
 
@@ -29,6 +32,10 @@ export default function () {
 
     const [showDialog, setDialog] = React.useState(true);
     const closeDialog = e => setDialog(false);
+
+    const clickNewTask = React.useCallback(() => {
+        setDialog(DIALOG_CREATE_TASK);
+    }, [tasks]);
 
     const [newTaskText, setNewTaskText] = React.useState("");
     const changeNewTaskText = e => setNewTaskText(e.target.value);
@@ -40,6 +47,16 @@ export default function () {
             text: newTaskText,
         }]);
     }
+
+    const [selectedTask, setSelectedTask] = React.useState();
+    const selectTask = task => {
+        setSelectedTask(task);
+        setDialog(DIALOG_EDIT_TASK);
+    }
+
+    const [editTaskText, setEditTaskText] = React.useState("");
+    const changeEditTaskText = e => setEditTaskText(e.target.value);
+
     return (
         <Page>
             <H1> 🌪️️ To<HighlightText>rna</HighlightText>do 🌪️</H1>
@@ -54,14 +71,14 @@ export default function () {
             </Tabs>
 
             <Container>
-                <Cards cards={tasks} showArchived={showArchived} />
+                <Cards cards={tasks} showArchived={showArchived} onClick={selectTask} />
                 <Switch on={showArchived}>
-                    <CardButton if={false}>New Task</CardButton>
+                    <CardButton if={false} onClick={clickNewTask}>New Task</CardButton>
                 </Switch>
             </Container>
 
             <Switch on={showDialog}>
-                <Dialog if={true} onClose={closeDialog}>
+                <Dialog if={DIALOG_CREATE_TASK} onClose={closeDialog}>
                     <H2>Create a new task</H2>
                     <TextInput onChange={changeNewTaskText} value={newTaskText} label="Task Name" placeholder />
                     <Actions>
@@ -69,12 +86,22 @@ export default function () {
                         <ActionButton blue onClick={createTask}>ADD TASK</ActionButton>
                     </Actions>
                 </Dialog>
+
+                <Dialog if={DIALOG_EDIT_TASK} onClose={closeDialog}>
+                    <H2>Edit task</H2>
+                    <TextInput onChange={changeEditTaskText} value={editTaskText} label="Task Name" placeholder />
+                    <Actions>
+                        <ActionButton onClick={closeDialog}>CANCEL</ActionButton>
+                        <ActionButton>SAVE</ActionButton>
+                        <ActionButton red >ARCHIVE</ActionButton>
+                    </Actions>
+                </Dialog>
             </Switch>
         </Page>
     );
 }
 
-function Cards({cards, showArchived}) {
+function Cards({cards, onClick, showArchived}) {
 
     return cards.filter(card => {
         // Ugly, but the only way we can match against the lack of a key
@@ -86,7 +113,12 @@ function Cards({cards, showArchived}) {
         return isArchived === showArchived;
     }).map(card => {
 
-        return <Card text={card.text} />;
+        return (
+            <Card
+                onClick={() => onClick(card)}
+                text={card.text}
+            />
+        );
     })
 }
 

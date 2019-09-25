@@ -89,4 +89,6 @@ We can toggle the Dialog using the same Switch component that toggles the New Ta
 
 All the hard boilerplate is done, so now everything should run pretty smoothly. 
 
-Creating a new task is as simple as a callback on the dialog that adds one new item to the task state.
+Creating a new task is as simple as a callback on the dialog that adds one new item to the task state. 
+
+The Edit task dialog is a slightly modified clone of the create task dialog, but its functionality is a little trickier since instead of appending to an array, it needs to swap an element out from the middle of it. 
