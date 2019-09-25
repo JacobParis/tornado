@@ -104,3 +104,5 @@ The last requirement I'm missing is to display the time for each task. I'm defin
 # Extras
 
 If I add a lot of text to a card, it gets difficult to read. Since I know how much text is inside each card, I can step down the font size for sentences.
+
+A person can only get so much done in a day so I'm also adding a little error message if you try to add too many tasks before archiving them.

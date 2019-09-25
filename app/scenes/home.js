@@ -17,11 +17,14 @@ const SampleTasks = [
     { text: "Go to sleep", archived: true, time: new Date().getTime() }
 ];
 
+const MAX_TASKS = 8;
+
 const TAB_GROUP = "PAGE";
 const TAB_TASKS = "TAB_TASKS";
 const TAB_ARCHIVED = "TAB_ARCHIVED";
 
 const DIALOG_CREATE_TASK = "DIALOG_CREATE_TASK";
+const DIALOG_ERROR_TASK = "DIALOG_ERROR_TASK";
 const DIALOG_EDIT_TASK = "DIALOG_EDIT_TASK";
 const DIALOG_EDIT_ARCHIVED_TASK = "DIALOG_EDIT_ARCHIVED_TASK";
 
@@ -35,7 +38,11 @@ export default function () {
     const closeDialog = e => setDialog(false);
 
     const clickNewTask = React.useCallback(() => {
-        setDialog(DIALOG_CREATE_TASK);
+        const activeTasks = tasks.filter(task => !task.archived);
+        const dialog = activeTasks.length > MAX_TASKS 
+            ? DIALOG_ERROR_TASK 
+            : DIALOG_CREATE_TASK;
+        setDialog(dialog);
     }, [tasks]);
 
     const [newTaskText, setNewTaskText] = React.useState("");
@@ -128,6 +135,14 @@ export default function () {
                     <Actions>
                         <ActionButton onClick={closeDialog}>CANCEL</ActionButton>
                         <ActionButton red onClick={deleteTask}>DELETE</ActionButton>
+                    </Actions>
+                </Dialog>
+
+                <Dialog if={DIALOG_ERROR_TASK} onClose={closeDialog}>
+                    <H2>Too Much Todo</H2>
+                    <P> Todo, I have a feeling we're not in Kansas anymore </P>
+                    <Actions>
+                        <ActionButton onClick={closeDialog}>🌪</ActionButton>
                     </Actions>
                 </Dialog>
             </Switch>
