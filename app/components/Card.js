@@ -97,7 +97,7 @@ const BaseCardButton = styled.button`
 export function CardButton({children, ...props}) {
     return (
         <BaseCardButton {...props}>
-            <CardText>
+            <CardText text={children}>
                 {children}
             </CardText>
         </BaseCardButton>
