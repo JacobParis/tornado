@@ -9,12 +9,8 @@ import { Tabs, Tab }  from "../components/Tabs";
 import { H1, H2, HighlightText, P } from "../components/Text";
 
 const SampleTasks = [
-    { text: "Wake Up", time: new Date().getTime()  },
-    { text: "Shower", time: new Date().getTime()  },
-    { text: "Go to Work", time: new Date().getTime() },
-    { text: "Eat Supper", archived: true, time: new Date().getTime() },
-    { text: "Brush Teeth", archived: true, time: new Date().getTime() },
-    { text: "Go to sleep", archived: true, time: new Date().getTime() }
+    { text: "Hire Jacob", time: new Date().getTime()  },
+    { text: "Interview Jacob", time: 1569232618000, archived: true }
 ];
 
 const MAX_TASKS = 8;
@@ -160,7 +156,7 @@ export default function () {
                     </Actions>
                 </Dialog>
             </Switch>
-            <P>Made with ❤️ by Jacob Paris</P>
+            <P>Made with ❤️ by <a href="https://jacobparis.com/">Jacob Paris</a></P>
         </Page>
     );
 
