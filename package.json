@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
+  "name": "tornado",
   "version": "1.0.0",
-  "description": "A simple boilerplate for bootstrapping a new React application",
+  "description": "A Todo List app for Oscar Intelligencen",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jacobparis/react-boilerplate.git"
+    "url": "git+https://github.com/jacobparis/tornado.git"
   },
   "author": "Jacob Paris",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jacobparis/react-boilerplate/issues"
+    "url": "https://github.com/jacobparis/tornado/issues"
   },
-  "homepage": "https://github.com/jacobparis/react-boilerplate#readme",
+  "homepage": "https://github.com/jacobparis/tornado#readme",
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
