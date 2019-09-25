@@ -1,6 +1,10 @@
 # 🌪 Tornado 🌪
 A Todo List app for Oscar Intelligence
 
+# Demo
+
+The site is live here: [Tornado on Netlify](https://zealous-lovelace-648e94.netlify.com)
+
 # Usage
 
 Clone this repository to your local environment
