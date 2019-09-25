@@ -24,6 +24,40 @@ const Theme = {
     }
 };
 
+export function getColorFromProps(props) {
+
+    if (props["blue"]) return Theme.Colors.Blue;
+    if (props["green"]) return Theme.Colors.Green;
+    if (props["olive"]) return Theme.Colors.Olive;
+    if (props["orange"]) return Theme.Colors.Orange;
+    if (props["red"]) return Theme.Colors.Red;
+    if (props["purple"]) return Theme.Colors.Purple;
+
+    return Theme.Shades.Lightest;
+}
+
+export function getBorderColorFromProps(props) {
+     if (props["blue"]) return Theme.Colors.Blue;
+    if (props["green"]) return Theme.Colors.Green;
+    if (props["olive"]) return Theme.Colors.Olive;
+    if (props["orange"]) return Theme.Colors.Orange;
+    if (props["red"]) return Theme.Colors.Red;
+    if (props["purple"]) return Theme.Colors.Purple;
+
+    return Theme.Shades.Lighter;
+}
+
+export function getTextColorFromProps(props) {
+    if (props["blue"]) return Theme.Shades.White;
+    if (props["green"]) return Theme.Shades.White;
+    if (props["olive"]) return Theme.Shades.White;
+    if (props["orange"]) return Theme.Shades.White;
+    if (props["red"]) return Theme.Shades.White;
+    if (props["purple"]) return Theme.Shades.White;
+    if (props["black"]) return Theme.Shades.White;
+
+    return Theme.Shades.Dark;
+}
 // Stolen from
 // https://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
 //

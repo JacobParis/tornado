@@ -75,3 +75,6 @@ I also want to hide the New Task button when viewing archived tasks. At the mome
 
 There are a lot of ways to conditionally show components in React, and I'm still not sold on which I prefer. Using a JSX ternary statement still seems hacky to me, so I'm going to use a basic Switch component that takes an `on` attribute and compares it to the `if` attribute of its children. This is similar to the way React Router shows Routes, so it can't be that bad of practice.
 
+# Dialog City
+
+The Dialog from my UI Kit is in its infancy still, but it'll work here. Dialogs actually present a rather difficult accessibility challenge since they ideally should assume focus and trap focus within themselves until they're canceled.

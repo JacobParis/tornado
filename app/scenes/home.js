@@ -1,9 +1,10 @@
 import React from "react";
 
 import { Card, CardButton } from "../components/Card";
+import { Dialog, Actions, ActionButton } from "../components/Dialog";
 import { Page, Container } from "../components/Layout";
 import { Tabs, Tab }  from "../components/Tabs";
-import { H1, HighlightText } from "../components/Text";
+import { H1, H2,  HighlightText } from "../components/Text";
 
 const SampleTasks = [
     { text: "Wake Up" },
@@ -43,6 +44,14 @@ export default function () {
                     <CardButton if={false}>New Task</CardButton>
                 </Switch>
             </Container>
+ 
+            <Dialog>
+                <H2>Create a new task</H2>
+                <Actions>
+                    <ActionButton>DISCARD</ActionButton>
+                    <ActionButton blue>ADD TASK</ActionButton>
+                </Actions>
+            </Dialog>
         </Page>
     );
 }
