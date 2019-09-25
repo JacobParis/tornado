@@ -54,3 +54,8 @@ These are not coming from my UI Kit since those tiles are built on CSS grid, and
 I guess I'm also picking Blue as my primary color here
 
 There are lots of options for choosing how to add a new task. Material design suggests a Floating Action Button that pops up a create dialog, but I like the more implicit design of having a clickable ghosty task card inline with the rest of the cards. I could even just turn that into an editable card onClick that becomes a real one as soon as you save it, but I know from past experience that getting React to play nicely with contentEditable divs is a huge hassle. I'll think more about that later.
+
+Hover effects are falling out of favour as mobile becomes the dominant platform, but they're still pleasant on desktop, so I want the brightness to go up on hover and darken on click. I found a [good lighten/darken script](https://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors) on StackOverflow that I will steal and throw in my `theme.js`. I'm not sold on keeping such utility functions here, so it might move later. 
+
+I also hate the default chrome outlines so I need to set manual focus styles with CSS. Keyboard users seem niche until you realize everyone who tabs through an input or submits a form with the Enter key becomes a keyboard user, so we need to accomodate them by default. One of my senior members of my [programming community Devcord](https://devcord.com/) likes to hide focus styles until the user starts to use the keyboard, which is a bit of UX delight I love but I don't think I'll go that for for this project.
+

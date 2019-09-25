@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Theme from "../theme";
+import Theme, { shadeColor } from "../theme";
 
 const BaseCard = styled.button`
     position: relative;
@@ -13,6 +13,15 @@ const BaseCard = styled.button`
     border-radius: ${Theme.Layout.Corners};
     border: 1px solid ${Theme.Colors.Primary};
     cursor: pointer;
+    &:focus {
+        border: 1px solid ${Theme.Shades.Lightest}99;
+    }
+    &:hover {
+        background: ${shadeColor(Theme.Colors.Primary, 15)}
+    }
+    &:active {
+        background: ${shadeColor(Theme.Colors.Primary, -15)}
+    }
 `;
 
 const CardText = styled.span`
@@ -46,6 +55,15 @@ const BaseCardButton = styled.button`
     border: 1px solid ${Theme.Colors.Primary};
     cursor: pointer;
     outline: none;
+    &:focus {
+        border: 1px solid ${Theme.Shades.Lightest}99;
+    }
+    &:hover {
+        background: ${Theme.Colors.Primary}66;
+    }
+    &:active {
+        background: ${Theme.Colors.Primary}33;
+    }
 `;
 
 export function CardButton({children, ...props}) {
