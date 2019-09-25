@@ -9,12 +9,12 @@ import { Tabs, Tab }  from "../components/Tabs";
 import { H1, H2, HighlightText, P } from "../components/Text";
 
 const SampleTasks = [
-    { text: "Wake Up" },
-    { text: "Shower" },
-    { text: "Go to Work"},
-    { text: "Eat Supper", archived: true},
-    { text: "Brush Teeth", archived: true},
-    { text: "Go to sleep", archived: true}
+    { text: "Wake Up", time: new Date().getTime()  },
+    { text: "Shower", time: new Date().getTime()  },
+    { text: "Go to Work", time: new Date().getTime() },
+    { text: "Eat Supper", archived: true, time: new Date().getTime() },
+    { text: "Brush Teeth", archived: true, time: new Date().getTime() },
+    { text: "Go to sleep", archived: true, time: new Date().getTime() }
 ];
 
 const TAB_GROUP = "PAGE";
@@ -46,6 +46,7 @@ export default function () {
         setNewTaskText("");
         setTasks(tasks => [...tasks, {
             text: newTaskText,
+            time: new Date().getTime()
         }]);
     }
 
@@ -138,7 +139,7 @@ export default function () {
         setTasks(tasks => {
             const position = tasks.findIndex(task => (
                 task.text === selectedTask.text 
-            &&  task.date === selectedTask.date
+            &&  task.time === selectedTask.time
             ));
 
             // Delete the item if changes is falsy
@@ -157,6 +158,7 @@ export default function () {
 }
 
 function Cards({cards, onClick, showArchived}) {
+    const currentTime = new Date().getTime();
 
     return cards.filter(card => {
         // Ugly, but the only way we can match against the lack of a key
@@ -167,11 +169,13 @@ function Cards({cards, onClick, showArchived}) {
 
         return isArchived === showArchived;
     }).map(card => {
+        const timeSentence = timeDifference(currentTime, card.time);
 
         return (
             <Card
                 onClick={() => onClick(card)}
                 text={card.text}
+                annotation={timeSentence}
             />
         );
     })
@@ -181,4 +185,43 @@ function Switch({on, children}) {
     const array = Array.isArray(children) ? children : [children];
 
     return array.filter(child => child.props.if === on);
+}
+
+
+// Stolen from
+// https://stackoverflow.com/questions/6108819/javascript-timestamp-to-relative-time-eg-2-seconds-ago-one-week-ago-etc-best
+//
+function timeDifference(current, previous) {
+
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+
+    var elapsed = current - previous;
+
+    if (elapsed < msPerMinute) {
+         return Math.round(elapsed/1000) + ' seconds ago';   
+    }
+
+    else if (elapsed < msPerHour) {
+         return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+    }
+
+    else if (elapsed < msPerDay ) {
+         return Math.round(elapsed/msPerHour ) + ' hours ago';   
+    }
+
+    else if (elapsed < msPerMonth) {
+        return Math.round(elapsed/msPerDay) + ' days ago';   
+    }
+
+    else if (elapsed < msPerYear) {
+        return Math.round(elapsed/msPerMonth) + ' months ago';   
+    }
+
+    else {
+        return Math.round(elapsed/msPerYear ) + ' years ago';   
+    }
 }

@@ -22,6 +22,17 @@ const BaseCard = styled.button`
     &:active {
         background: ${shadeColor(Theme.Colors.Primary, -15)}
     }
+    &:before {
+        font-family: Roboto, sans-serif;
+        content: attr(data-annotation);
+        text-transform: uppercase;
+        position: absolute;
+            top: -1rem;
+            left: 0;
+            right: 0;
+        color: white;
+        opacity: 0.8;
+    }
 `;
 
 const CardText = styled.span`
@@ -30,9 +41,9 @@ const CardText = styled.span`
     color: white;
 `;
 
-export function Card({children, ...props}) {
+export function Card({children, annotation, ...props}) {
     return (
-        <BaseCard {...props}>
+        <BaseCard data-annotation={annotation} {...props}>
             <CardText>
                 {props.text}
             </CardText>

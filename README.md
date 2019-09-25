@@ -98,3 +98,5 @@ I'm sure there's some cleaner way of editing an item in place in an array but I'
 However it does provide a nice API for me to interact with the tasks. Renaming them and archiving them each take just a simple one-liner.
 
 It doesn't make sense to edit or archive tasks that are already archived, so I can either make them unclickable or come up with a second dialog strictly for the archived tasks. Deleting them permanently is as simple as any other change, so I can copy paste my previous dialog and add delete functionality in a minute or two.
+
+The last requirement I'm missing is to display the time for each task. I'm definitely not installing Moment.js just for this, but luckily there's a little [relative time function](https://stackoverflow.com/questions/6108819/javascript-timestamp-to-relative-time-eg-2-seconds-ago-one-week-ago-etc-best) on StackOverflow I can steal. I don't want to worry about wrapper elements around my cards or trying to jam the date inside, so I'll do a little CSS annotation above them. 
