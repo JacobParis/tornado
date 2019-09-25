@@ -27,6 +27,9 @@ export default function () {
     const [showArchived, setShowArchived] = React.useState(false);
     const toggleArchived = e => setShowArchived(e.target.value === TAB_ARCHIVED);
 
+    const [showDialog, setDialog] = React.useState(true);
+    const closeDialog = e => setDialog(false);
+
     const [newTaskText, setNewTaskText] = React.useState("");
     const changeNewTaskText = e => setNewTaskText(e.target.value);
 
@@ -50,14 +53,16 @@ export default function () {
                 </Switch>
             </Container>
 
-            <Dialog>
-                <H2>Create a new task</H2>
-                <TextInput onChange={changeNewTaskText} value={newTaskText} label="Task Name" placeholder />
-                <Actions>
-                    <ActionButton>DISCARD</ActionButton>
-                    <ActionButton blue>ADD TASK</ActionButton>
-                </Actions>
-            </Dialog>
+            <Switch on={showDialog}>
+                <Dialog if={true} onClose={closeDialog}>
+                    <H2>Create a new task</H2>
+                    <TextInput onChange={changeNewTaskText} value={newTaskText} label="Task Name" placeholder />
+                    <Actions>
+                        <ActionButton onClick={closeDialog}>DISCARD</ActionButton>
+                        <ActionButton blue>ADD TASK</ActionButton>
+                    </Actions>
+                </Dialog>
+            </Switch>
         </Page>
     );
 }
