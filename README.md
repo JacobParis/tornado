@@ -51,4 +51,6 @@ I want to show the tasks as a list of square cards, like sticky notes or physica
 
 These are not coming from my UI Kit since those tiles are built on CSS grid, and here I'm only looking for a 1 dimensional row of identically sized cards.
 
-I guess I'm also picking Blue as my primary color here 
+I guess I'm also picking Blue as my primary color here
+
+There are lots of options for choosing how to add a new task. Material design suggests a Floating Action Button that pops up a create dialog, but I like the more implicit design of having a clickable ghosty task card inline with the rest of the cards. I could even just turn that into an editable card onClick that becomes a real one as soon as you save it, but I know from past experience that getting React to play nicely with contentEditable divs is a huge hassle. I'll think more about that later.

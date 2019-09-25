@@ -21,12 +21,39 @@ const CardText = styled.span`
     color: white;
 `;
 
-export function Card(props) {
+export function Card({children, ...props}) {
     return (
-        <BaseCard>
+        <BaseCard {...props}>
             <CardText>
                 {props.text}
             </CardText>
         </BaseCard>
+    )
+}
+
+const BaseCardButton = styled.button`
+    position: relative;
+    background: none;
+    height: ${Theme.Layout.Grid};
+    flex: 0 0 ${Theme.Layout.Grid};
+    border-radius: ${Theme.Layout.Corners};
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 300;
+    border: 1px solid ${Theme.Colors.Primary};
+    cursor: pointer;
+    outline: none;
+`;
+
+export function CardButton({children, ...props}) {
+    return (
+        <BaseCardButton {...props}>
+            <CardText>
+                {children}
+            </CardText>
+        </BaseCardButton>
     )
 }

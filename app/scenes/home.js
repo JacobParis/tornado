@@ -2,7 +2,7 @@ import React from "react";
 
 import { Page, Cards } from "../components/Layout";
 import { H1, HighlightText } from "../components/Text";
-import { Card } from "../components/Card";
+import { Card, CardButton } from "../components/Card";
 
 
 export default function () {
@@ -13,6 +13,9 @@ export default function () {
             
             <Cards>
                 <Card text="Task" />
+                <Card text="Task" />
+                <Card text="Task" />
+                <CardButton>New Task</CardButton>
             </Cards>
         </Page>
     );
