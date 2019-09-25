@@ -57,6 +57,20 @@ export default function () {
     const [editTaskText, setEditTaskText] = React.useState("");
     const changeEditTaskText = e => setEditTaskText(e.target.value);
 
+    const saveTask = () => {
+        setDialog(false);
+        modifySelectedTask({
+            text: editTaskText
+        });
+    }
+
+    const archiveTask = () => {
+        setDialog(false);
+        modifySelectedTask({
+            archived: true
+        });
+    }
+
     return (
         <Page>
             <H1> 🌪️️ To<HighlightText>rna</HighlightText>do 🌪️</H1>
@@ -92,13 +106,35 @@ export default function () {
                     <TextInput onChange={changeEditTaskText} value={editTaskText} label="Task Name" placeholder />
                     <Actions>
                         <ActionButton onClick={closeDialog}>CANCEL</ActionButton>
-                        <ActionButton>SAVE</ActionButton>
-                        <ActionButton red >ARCHIVE</ActionButton>
+                        <ActionButton onClick={saveTask}>SAVE</ActionButton>
+                        <ActionButton red onClick={archiveTask}>ARCHIVE</ActionButton>
                     </Actions>
                 </Dialog>
             </Switch>
         </Page>
     );
+
+    function modifySelectedTask(changes) {
+        // Disclaimer: this code is ugly but I'm on a time limit 
+        setTasks(tasks => {
+            const position = tasks.findIndex(task => (
+                task.text === selectedTask.text 
+            &&  task.date === selectedTask.date
+            ));
+
+            // Delete the item if changes is falsy
+            const task = changes && {
+                ...selectedTask,
+                ...changes
+            };
+
+            return [
+                ...tasks.slice(0, position),
+                ...changes ? [task] : [],
+                ...tasks.slice(position + 1)
+            ];
+        });
+    }
 }
 
 function Cards({cards, onClick, showArchived}) {
