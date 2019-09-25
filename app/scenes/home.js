@@ -33,6 +33,13 @@ export default function () {
     const [newTaskText, setNewTaskText] = React.useState("");
     const changeNewTaskText = e => setNewTaskText(e.target.value);
 
+    const createTask = () => {
+        setDialog(false);
+        setNewTaskText("");
+        setTasks(tasks => [...tasks, {
+            text: newTaskText,
+        }]);
+    }
     return (
         <Page>
             <H1> 🌪️️ To<HighlightText>rna</HighlightText>do 🌪️</H1>
@@ -59,7 +66,7 @@ export default function () {
                     <TextInput onChange={changeNewTaskText} value={newTaskText} label="Task Name" placeholder />
                     <Actions>
                         <ActionButton onClick={closeDialog}>DISCARD</ActionButton>
-                        <ActionButton blue>ADD TASK</ActionButton>
+                        <ActionButton blue onClick={createTask}>ADD TASK</ActionButton>
                     </Actions>
                 </Dialog>
             </Switch>

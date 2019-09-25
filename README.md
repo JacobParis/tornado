@@ -84,3 +84,9 @@ Text Inputs are tricky from a usability perspective especially concerning the le
 Here I'm going to use an input with a placeholder that moves out of the way as the user types like the Material Design spec promotes.
 
 We can toggle the Dialog using the same Switch component that toggles the New Task button. Right now it just handles true or false, but it'll work just as well for switching between distinct different dialogs too.
+
+# Functionality Time
+
+All the hard boilerplate is done, so now everything should run pretty smoothly. 
+
+Creating a new task is as simple as a callback on the dialog that adds one new item to the task state.
