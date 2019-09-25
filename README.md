@@ -59,3 +59,9 @@ Hover effects are falling out of favour as mobile becomes the dominant platform,
 
 I also hate the default chrome outlines so I need to set manual focus styles with CSS. Keyboard users seem niche until you realize everyone who tabs through an input or submits a form with the Enter key becomes a keyboard user, so we need to accomodate them by default. One of my senior members of my [programming community Devcord](https://devcord.com/) likes to hide focus styles until the user starts to use the keyboard, which is a bit of UX delight I love but I don't think I'll go that for for this project.
 
+## The First Mistake
+
+I named the container where my Cards were `Cards` which seemed appropriate at the time. In truth it's a generic container, and I want to use that name for the function that generates my cards, so time to refactor a bit. 
+
+Having a static list of Card components in my scene doesn't make sense when the data needs to be dynamic, so I can replace them with a function that inputs a JSON list of tasks and outputs a Card for each.
+

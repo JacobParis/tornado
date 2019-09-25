@@ -12,7 +12,7 @@ export const Page = styled.div`
     text-align: center;  
 `;
 
-export const Cards = styled.div`
+export const Container = styled.div`
     background: ${Theme.Shades.Darkest};
     display: flex;
     flex-wrap: wrap;
