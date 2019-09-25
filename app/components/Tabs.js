@@ -39,8 +39,25 @@ const BaseTab = styled.input.attrs({
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    &:checked + ${TabLabel} {
-        color: ${Theme.Colors.Primary}
+    + ${TabLabel}:before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 0;
+        right: 0;
+        bottom: -0.75rem;
+        margin: auto;
+        border-left: 1rem solid transparent;
+        border-right: 1rem solid transparent;
+        border-bottom: 1rem solid ${Theme.Shades.Darkest};
+        transition: all 0.2s ease-out;
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    &:checked + ${TabLabel}:before {
+        transform: translateY(0);
+        opacity: 1;
     }
 `;
 

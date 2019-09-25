@@ -69,3 +69,5 @@ The requirements ask for a way to delete tasks, but it seems weird to not have a
 
 On the UI side, I'm controlling the `showArchived` state with the Tabs component from my UI Kit. Under the hood it's just a radio button group, which makes it very accessible to keyboard users and ties in really well to React's state machine.
 
+Displaying the current tab status by highlighting the tab text doesn't really work in a world where I'm also changing the tab text colour on hover, so I'm making a [tiny little CSS arrow](https://css-tricks.com/snippets/css/css-triangle/) using some border magic.
+
