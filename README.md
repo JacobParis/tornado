@@ -43,3 +43,6 @@ I can never decide on a good border radius to use for a given product, so that'l
 
 There is some chance that live blogging my dev process is going to push me over the 3 hour limit, but todo apps are also literally the first project a junior developer usually does with a language they've never seen before so I'm pretty confident.
 
+## Building the Page
+
+I'm stealing the Text component from my UI Kit and adding a palette of colors and shades to my Theme file. I don't think I'll need more than one Header and the Paragraph text, but I'm kinda making this up as I go. 
