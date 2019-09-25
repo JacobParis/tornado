@@ -146,6 +146,7 @@ export default function () {
                     </Actions>
                 </Dialog>
             </Switch>
+            <P>Made with ❤️ by Jacob Paris</P>
         </Page>
     );
 

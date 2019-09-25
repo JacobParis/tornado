@@ -17,4 +17,8 @@ export const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    @media screen and (min-width: 400px) {
+        padding: 1rem;
+        justify-content: space-between;
+    }
 `;
