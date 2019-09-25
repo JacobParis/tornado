@@ -71,3 +71,7 @@ On the UI side, I'm controlling the `showArchived` state with the Tabs component
 
 Displaying the current tab status by highlighting the tab text doesn't really work in a world where I'm also changing the tab text colour on hover, so I'm making a [tiny little CSS arrow](https://css-tricks.com/snippets/css/css-triangle/) using some border magic.
 
+I also want to hide the New Task button when viewing archived tasks. At the moment I don't see a compelling use-case for creating pre-archived tasks, which would be the digital equivalent of the satisfying yet unnecessary *writing items on your todo list and crossing them off immediately*
+
+There are a lot of ways to conditionally show components in React, and I'm still not sold on which I prefer. Using a JSX ternary statement still seems hacky to me, so I'm going to use a basic Switch component that takes an `on` attribute and compares it to the `if` attribute of its children. This is similar to the way React Router shows Routes, so it can't be that bad of practice.
+

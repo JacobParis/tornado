@@ -39,7 +39,9 @@ export default function () {
 
             <Container>
                 <Cards cards={tasks} showArchived={showArchived} />
-                <CardButton>New Task</CardButton>
+                <Switch on={showArchived}>
+                    <CardButton if={false}>New Task</CardButton>
+                </Switch>
             </Container>
         </Page>
     );
@@ -59,4 +61,10 @@ function Cards({cards, showArchived}) {
 
         return <Card text={card.text} />;
     })
+}
+
+function Switch({on, children}) {
+    const array = Array.isArray(children) ? children : [children];
+
+    return array.filter(child => child.props.if === on);
 }
