@@ -108,3 +108,5 @@ If I add a lot of text to a card, it gets difficult to read. Since I know how mu
 A person can only get so much done in a day so I'm also adding a little error message if you try to add too many tasks before archiving them.
 
 The cards sit asymmetrically on very small screens (iPhone 5 size) so I'll add a breakpoint where they're centered at that scale
+
+The dialogs should have keyboard support, where you can press enter after typing to submit the form. The edit dialog is a unique case where we actually have two action buttons, and we can change which one we're targeting based on whether there's text or not in the field.

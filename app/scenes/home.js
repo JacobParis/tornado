@@ -49,6 +49,8 @@ export default function () {
     const changeNewTaskText = e => setNewTaskText(e.target.value);
 
     const createTask = () => {
+        if (!newTaskText.length) return;
+
         setDialog(false);
         setNewTaskText("");
         setTasks(tasks => [...tasks, {
@@ -112,7 +114,13 @@ export default function () {
             <Switch on={showDialog}>
                 <Dialog if={DIALOG_CREATE_TASK} onClose={closeDialog}>
                     <H2>Create a new task</H2>
-                    <TextInput onChange={changeNewTaskText} value={newTaskText} label="Task Name" placeholder />
+                    <TextInput
+                        onChange={changeNewTaskText}
+                        onKeyPress={e => e.key === "Enter" && createTask()}
+                        value={newTaskText}
+                        label="Task Name"
+                        placeholder
+                    />
                     <Actions>
                         <ActionButton onClick={closeDialog}>DISCARD</ActionButton>
                         <ActionButton blue onClick={createTask}>ADD TASK</ActionButton>
@@ -121,11 +129,17 @@ export default function () {
 
                 <Dialog if={DIALOG_EDIT_TASK} onClose={closeDialog}>
                     <H2>Edit task</H2>
-                    <TextInput onChange={changeEditTaskText} value={editTaskText} label="Task Name" placeholder />
+                    <TextInput
+                        onChange={changeEditTaskText}
+                        onKeyPress={e => e.key === "Enter" && (editTaskText.length ? saveTask() : archiveTask())}
+                        value={editTaskText}
+                        label="Task Name"
+                        placeholder
+                    />
                     <Actions>
                         <ActionButton onClick={closeDialog}>CANCEL</ActionButton>
-                        <ActionButton onClick={saveTask}>SAVE</ActionButton>
-                        <ActionButton red onClick={archiveTask}>ARCHIVE</ActionButton>
+                        <ActionButton green={editTaskText.length} onClick={saveTask}>SAVE</ActionButton>
+                        <ActionButton red={!editTaskText.length} onClick={archiveTask}>ARCHIVE</ActionButton>
                     </Actions>
                 </Dialog>
 
