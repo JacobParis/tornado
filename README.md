@@ -65,3 +65,5 @@ I named the container where my Cards were `Cards` which seemed appropriate at th
 
 Having a static list of Card components in my scene doesn't make sense when the data needs to be dynamic, so I can replace them with a function that inputs a JSON list of tasks and outputs a Card for each.
 
+The requirements ask for a way to delete tasks, but it seems weird to not have a way to view complete tasks so I'm adding an intermediate state called Archived. By toggling a state prop called `showArchived` I can show either the active or archived tasks.
+
