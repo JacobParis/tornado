@@ -37,14 +37,31 @@ const BaseCard = styled.button`
 
 const CardText = styled.span`
     font-family: 'Roboto Condensed', sans-serif;
-    font-size: 2rem;
+    font-size: ${getFontSizeFromProps};
     color: white;
 `;
+
+function getFontSizeFromProps(props) {
+    if (!props || !props.text) {
+        return "1rem";
+    }
+
+    if (props.text.length < 10) {
+        return "2.25rem";
+    }
+
+    if (props.text.length < 35) {
+        return "1.75rem";
+    }
+
+    return "1.25rem";
+
+}
 
 export function Card({children, annotation, ...props}) {
     return (
         <BaseCard data-annotation={annotation} {...props}>
-            <CardText>
+            <CardText text={props.text}>
                 {props.text}
             </CardText>
         </BaseCard>
